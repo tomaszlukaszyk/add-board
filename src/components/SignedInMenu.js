@@ -12,7 +12,7 @@ export default function SignedInMenu() {
           <NavLink to="/">Sign out</NavLink>
         </li>
         <li>
-          <NavLink to="/" className="btn btn-floating">
+          <NavLink to="/" className="btn btn-floating purple lighten-3">
             NN
           </NavLink>
         </li>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div className="navbar-fixed">
-      <nav className="nav-wrapper">
+      <nav className="nav-wrapper light-blue darken-3">
         <div className="container">
           <Link to="/" className="brand-logo">
             AddBoard
