@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Advertisement from "./Advertisement";
+import { Link } from "react-router-dom";
 
 export default class Dashboard extends Component {
   render() {
@@ -21,6 +22,14 @@ export default class Dashboard extends Component {
           <Advertisement />
           <Advertisement />
           <Advertisement />
+        </div>
+        <div class="fixed-action-btn">
+          <Link
+            to="/create-add"
+            className="btn-floating btn-large purple lighten-3"
+          >
+            <i class="material-icons">add</i>
+          </Link>
         </div>
       </div>
     );
