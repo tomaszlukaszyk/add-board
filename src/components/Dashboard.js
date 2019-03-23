@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class Dashboard extends Component {
   render() {
     return (
-      <div className="container row section">
+      <div className="container row">
         <div className="col s12 m6 offset-m3">
           <Advertisement />
           <Advertisement />
@@ -23,12 +23,12 @@ export default class Dashboard extends Component {
           <Advertisement />
           <Advertisement />
         </div>
-        <div class="fixed-action-btn">
+        <div className="fixed-action-btn">
           <Link
             to="/create-add"
             className="btn-floating btn-large purple lighten-3"
           >
-            <i class="material-icons">add</i>
+            <i className="material-icons">add</i>
           </Link>
         </div>
       </div>
