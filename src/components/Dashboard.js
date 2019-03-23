@@ -1,28 +1,17 @@
 import React, { Component } from "react";
-import Advertisement from "./Advertisement";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class Dashboard extends Component {
+import Advertisement from "./Advertisement";
+
+class Dashboard extends Component {
   render() {
+    const ads = this.props.ads.map(add => (
+      <Advertisement key={add.id} add={add} />
+    ));
     return (
       <div className="dashboard container row">
-        <div className="col s12 m6 offset-m3">
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-          <Advertisement />
-        </div>
+        <div className="col s12 m6 offset-m3">{ads}</div>
         <div className="fixed-action-btn">
           <Link
             to="/create-add"
@@ -35,3 +24,13 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  ads: state.addReducer.ads
+});
+
+// const mapDispatchToProps = {
+
+// }
+
+export default connect(mapStateToProps)(Dashboard);
