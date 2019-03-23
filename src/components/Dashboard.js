@@ -6,12 +6,16 @@ import Advertisement from "./Advertisement";
 
 class Dashboard extends Component {
   render() {
-    const ads = this.props.ads.map(add => (
-      <Advertisement key={add.id} add={add} />
-    ));
+    const { ads } = this.props;
+
+    if (!ads.length) {
+      return <h5 className="section center-align">No ads to display</h5>;
+    }
+
+    const adsList = ads.map(add => <Advertisement key={add.id} add={add} />);
     return (
       <div className="dashboard container row">
-        <div className="col s12 m6 offset-m3">{ads}</div>
+        <div className="col s12 m6 offset-m3">{adsList}</div>
         <div className="fixed-action-btn">
           <Link
             to="/create-add"
