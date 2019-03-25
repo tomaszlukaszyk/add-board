@@ -36,7 +36,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ads: state.firestoreReducer.ordered.ads };
+  return { ads: state.firestore.ordered.ads };
 };
 
 // const mapDispatchToProps = {

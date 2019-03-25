@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import SignedInMenu from "./SignedInMenu";
 import SignedOutMenu from "./SignedOutMenu";
-import { Link } from "react-router-dom";
 
-export default function Navbar() {
+function Navbar({ auth }) {
+  const menu = auth.isEmpty ? <SignedOutMenu /> : <SignedInMenu />;
   return (
     <div className="navbar-fixed">
       <nav className="nav-wrapper light-blue darken-3">
@@ -11,10 +14,15 @@ export default function Navbar() {
           <Link to="/" className="brand-logo">
             AddBoard
           </Link>
-          <SignedInMenu />
-          <SignedOutMenu />
+          {menu}
         </div>
       </nav>
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+});
+
+export default connect(mapStateToProps)(Navbar);
