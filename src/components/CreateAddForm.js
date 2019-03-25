@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class CreateAddForm extends Component {
+import { createAdd } from "../actions/addActions";
+
+class CreateAddForm extends Component {
   state = {
     title: "",
     content: ""
@@ -12,7 +15,7 @@ export default class CreateAddForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.createAdd(this.state);
   };
   render() {
     return (
@@ -39,3 +42,14 @@ export default class CreateAddForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createAdd: add => dispatch(createAdd(add))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateAddForm);

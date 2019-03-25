@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 import Advertisement from "./Advertisement";
 
 class Dashboard extends Component {
   render() {
     const { ads } = this.props;
+
+    if (!ads) {
+      return <h5 className="section center-align">Loading...</h5>;
+    }
 
     if (!ads.length) {
       return <h5 className="section center-align">No ads to display</h5>;
@@ -29,12 +35,15 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ads: state.addReducer.ads
-});
+const mapStateToProps = state => {
+  return { ads: state.firestoreReducer.ordered.ads };
+};
 
 // const mapDispatchToProps = {
 
 // }
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "ads" }])
+)(Dashboard);
