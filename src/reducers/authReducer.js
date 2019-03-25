@@ -1,7 +1,9 @@
 import {
   SIGN_IN_SUCCESS,
   SIGN_IN_ERROR,
-  SIGN_OUT_SUCCESS
+  SIGN_OUT_SUCCESS,
+  SIGN_UP_SECCESS,
+  SIGN_UP_ERROR
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -19,6 +21,10 @@ export default (state = initialState, { type, payload }) => {
     case SIGN_OUT_SUCCESS:
       console.log("sign out success");
       return state;
+    case SIGN_UP_SECCESS:
+      return { ...state, authError: null };
+    case SIGN_UP_ERROR:
+      return { ...state, authError: payload };
 
     default:
       return state;
