@@ -1,10 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Avatar from "./Avatar";
 
-export default function Advertisement({ add, user }) {
+function Advertisement({ add, user, auth }) {
   const { firstName, lastName } = user;
+  const ownerActions =
+    auth.isEmpty || auth.uid !== add.authorId ? null : (
+      <React.Fragment>
+        <Link to="/" className="blue-text">
+          Edit
+        </Link>
+        <Link to="/" className="blue-text">
+          Delete
+        </Link>
+      </React.Fragment>
+    );
   return (
     <div className="card hoverable">
       <div className="card-content">
@@ -21,12 +33,16 @@ export default function Advertisement({ add, user }) {
       </div>
       <div className="card-action">
         <Link to="/" className="blue-text">
-          Save
+          Comment
         </Link>
-        <Link to="/" className="blue-text">
-          Message
-        </Link>
+        {ownerActions}
       </div>
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+});
+
+export default connect(mapStateToProps)(Advertisement);
