@@ -12,7 +12,7 @@ function Navbar({ auth }) {
       <nav className="nav-wrapper light-blue darken-3">
         <div className="container">
           <Link to="/" className="brand-logo">
-            AddBoard
+            AdBoard
           </Link>
           {menu}
         </div>

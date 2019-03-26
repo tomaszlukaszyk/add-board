@@ -2,11 +2,11 @@ import { combineReducers } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 import { firestoreReducer } from "redux-firestore";
 
-import addReducer from "./addReducer";
+import adReducer from "./adReducer";
 import authReducer from "./authReducer";
 
 const rootReducer = combineReducers({
-  add: addReducer,
+  ad: adReducer,
   auth: authReducer,
   firebase: firebaseReducer,
   firestore: firestoreReducer

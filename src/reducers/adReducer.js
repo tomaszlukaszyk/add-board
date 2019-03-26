@@ -1,4 +1,4 @@
-import { CREATE_ADD, CREATE_ADD_ERROR } from "../actions/actionTypes";
+import { CREATE_AD, CREATE_AD_ERROR } from "../actions/actionTypes";
 
 const initialState = {
   ads: []
@@ -6,9 +6,9 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case CREATE_ADD:
+    case CREATE_AD:
       return state;
-    case CREATE_ADD_ERROR:
+    case CREATE_AD_ERROR:
       return state;
 
     default:

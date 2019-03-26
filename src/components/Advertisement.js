@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 
 import Avatar from "./Avatar";
 
-function Advertisement({ add, user, auth }) {
+function Advertisement({ ad, user, auth }) {
   const { firstName, lastName } = user;
   const ownerActions =
-    auth.isEmpty || auth.uid !== add.authorId ? null : (
+    auth.isEmpty || auth.uid !== ad.authorId ? null : (
       <React.Fragment>
         <Link to="/" className="blue-text">
           Edit
@@ -28,8 +28,8 @@ function Advertisement({ add, user, auth }) {
         </span>
       </div>
       <div className="card-action">
-        <span className="card-title">{add.title}</span>
-        <p>{add.content}</p>
+        <span className="card-title">{ad.title}</span>
+        <p>{ad.content}</p>
       </div>
       <div className="card-action">
         <Link to="/" className="blue-text">

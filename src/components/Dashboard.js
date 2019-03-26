@@ -18,15 +18,15 @@ class Dashboard extends Component {
       return <h5 className="section center-align">No ads to display</h5>;
     }
 
-    const adsList = ads.map(add => (
-      <Advertisement key={add.id} add={add} user={users[add.authorId]} />
+    const adsList = ads.map(ad => (
+      <Advertisement key={ad.id} ad={ad} user={users[ad.authorId]} />
     ));
     return (
       <div className="dashboard container row">
         <div className="col s12 m6 offset-m3">{adsList}</div>
         <div className="fixed-action-btn">
           <Link
-            to="/create-add"
+            to="/create-ad"
             className="btn-floating btn-large purple lighten-3"
           >
             <i className="material-icons">add</i>

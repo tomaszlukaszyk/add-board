@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
+
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
-import CreateAddForm from "./components/CreateAddForm";
+import CreateAdForm from "./components/CreateAdForm";
 
 class App extends Component {
   getComponent(isProtected, component) {
@@ -37,8 +38,8 @@ class App extends Component {
               component={this.getComponent(false, SignUpForm)}
             />
             <Route
-              path="/create-add"
-              component={this.getComponent(true, CreateAddForm)}
+              path="/create-ad"
+              component={this.getComponent(true, CreateAdForm)}
             />
           </Switch>
         </div>

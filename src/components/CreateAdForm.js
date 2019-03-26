@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createAdd } from "../actions/addActions";
+import { createAd } from "../actions/adActions";
 
-class CreateAddForm extends Component {
+class CreateAdForm extends Component {
   state = {
     title: "",
     content: ""
@@ -15,13 +15,13 @@ class CreateAddForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createAdd(this.state);
+    this.props.createAd(this.state);
   };
   render() {
     return (
       <div className="container row">
         <form onSubmit={this.handleSubmit} className="col s12 m6 offset-m3">
-          <h5>Post new add</h5>
+          <h5>Post new ad</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
             <input type="text" id="title" onChange={this.handleChange} />
@@ -45,11 +45,11 @@ class CreateAddForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createAdd: add => dispatch(createAdd(add))
+    createAd: ad => dispatch(createAd(ad))
   };
 };
 
 export default connect(
   null,
   mapDispatchToProps
-)(CreateAddForm);
+)(CreateAdForm);
