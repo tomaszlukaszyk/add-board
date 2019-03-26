@@ -8,9 +8,9 @@ import Advertisement from "./Advertisement";
 
 class Dashboard extends Component {
   render() {
-    const { ads } = this.props;
+    const { ads, users } = this.props;
 
-    if (!ads) {
+    if (!ads || !users) {
       return <h5 className="section center-align">Loading...</h5>;
     }
 
@@ -18,7 +18,9 @@ class Dashboard extends Component {
       return <h5 className="section center-align">No ads to display</h5>;
     }
 
-    const adsList = ads.map(add => <Advertisement key={add.id} add={add} />);
+    const adsList = ads.map(add => (
+      <Advertisement key={add.id} add={add} user={users[add.authorId]} />
+    ));
     return (
       <div className="dashboard container row">
         <div className="col s12 m6 offset-m3">{adsList}</div>
@@ -36,7 +38,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ads: state.firestore.ordered.ads };
+  return {
+    ads: state.firestore.ordered.ads,
+    users: state.firestore.data.users
+  };
 };
 
 // const mapDispatchToProps = {
@@ -45,5 +50,5 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "ads" }])
+  firestoreConnect([{ collection: "ads" }, { collection: "users" }])
 )(Dashboard);

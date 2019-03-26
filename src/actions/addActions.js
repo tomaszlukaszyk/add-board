@@ -6,7 +6,7 @@ export const createAdd = add => {
       .collection("ads")
       .add({
         ...add,
-        author: "Test author",
+        authorId: getState().firebase.auth.uid,
         postedAt: new Date()
       })
       .then(() =>
