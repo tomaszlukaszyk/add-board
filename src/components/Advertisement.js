@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import Avatar from "./Avatar";
 
@@ -24,7 +25,9 @@ function Advertisement({ ad, user, auth }) {
           <Avatar profile={user} />
         </Link>
         <span className="posted-by grey-text">
-          {`${firstName} ${lastName}`}, 12 sep 2018
+          {`${firstName} ${lastName}, ${moment(
+            ad.postedAt.toDate()
+          ).calendar()}`}
         </span>
       </div>
       <div className="card-action">
