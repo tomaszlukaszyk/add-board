@@ -15,7 +15,7 @@ export const signIn = ({ email, password }) => {
         dispatch({ type: SIGN_IN_SUCCESS });
       })
       .catch(err => {
-        dispatch({ type: SIGN_IN_ERROR, err });
+        dispatch({ type: SIGN_IN_ERROR, payload: err });
       });
   };
 };
