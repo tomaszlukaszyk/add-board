@@ -12,9 +12,15 @@ import * as serviceWorker from "./serviceWorker";
 import rootReducer from "./reducers/rootReducer";
 import fbConfig from "./config/fbConfig";
 
+const rrfbConfig = {
+  attachAuthIsReady: true,
+  useFirestoreForProfile: true,
+  userProfile: "users"
+};
+
 const enchancers = compose(
   applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-  reactReduxFirebase(fbConfig, { attachAuthIsReady: true }),
+  reactReduxFirebase(fbConfig, rrfbConfig),
   reduxFirestore(fbConfig)
 );
 
