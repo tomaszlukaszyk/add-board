@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import moment from "moment";
 
 import Avatar from "./Avatar";
+import { deleteAd } from "../actions/adActions";
 
-function Advertisement({ ad, user, auth }) {
+function Advertisement({ ad, user, auth, deleteAd }) {
   const { firstName, lastName } = user;
   const ownerActions =
     auth.isEmpty || auth.uid !== ad.authorId ? null : (
@@ -13,7 +14,7 @@ function Advertisement({ ad, user, auth }) {
         <Link to="/" className="blue-text">
           Edit
         </Link>
-        <Link to="/" className="blue-text">
+        <Link to="/" className="blue-text" onClick={() => deleteAd(ad.id)}>
           Delete
         </Link>
       </div>
@@ -43,4 +44,11 @@ const mapStateToProps = state => ({
   auth: state.firebase.auth
 });
 
-export default connect(mapStateToProps)(Advertisement);
+const mapDispatchToProps = dispatch => ({
+  deleteAd: adId => dispatch(deleteAd(adId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Advertisement);

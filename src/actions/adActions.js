@@ -2,7 +2,9 @@ import {
   CREATE_AD,
   CREATE_AD_ERROR,
   ADD_COMMENT,
-  ADD_COMMENT_ERROR
+  ADD_COMMENT_ERROR,
+  DELETE_AD_SUCCESS,
+  DELETE_AD_ERROR
 } from "./actionTypes";
 
 export const createAd = ad => {
@@ -26,6 +28,21 @@ export const createAd = ad => {
           payload: err
         })
       );
+  };
+};
+
+export const deleteAd = adId => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    getFirestore()
+      .collection("ads")
+      .doc(adId)
+      .delete()
+      .then(() => {
+        dispatch({ type: DELETE_AD_SUCCESS });
+      })
+      .catch(err => {
+        dispatch({ type: DELETE_AD_ERROR, payload: err });
+      });
   };
 };
 

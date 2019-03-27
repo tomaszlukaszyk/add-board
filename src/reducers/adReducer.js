@@ -2,7 +2,9 @@ import {
   CREATE_AD,
   CREATE_AD_ERROR,
   ADD_COMMENT,
-  ADD_COMMENT_ERROR
+  ADD_COMMENT_ERROR,
+  DELETE_AD_SUCCESS,
+  DELETE_AD_ERROR
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -14,6 +16,12 @@ export default (state = initialState, { type, payload }) => {
     case CREATE_AD:
       return state;
     case CREATE_AD_ERROR:
+      return state;
+    case DELETE_AD_SUCCESS:
+      console.log("ad deleted");
+      return state;
+    case DELETE_AD_ERROR:
+      console.log(payload);
       return state;
     case ADD_COMMENT:
       return state;
