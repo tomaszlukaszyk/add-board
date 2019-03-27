@@ -16,6 +16,9 @@ class AddComentForm extends Component {
     e.preventDefault();
     const { adId } = this.props;
     this.props.addComment({ comment: this.state, adId });
+    this.setState({
+      content: ""
+    });
   };
   render() {
     return (
@@ -27,6 +30,7 @@ class AddComentForm extends Component {
             id="content"
             className="materialize-textarea"
             onChange={this.handleChange}
+            value={this.state.content}
           />
         </div>
         <div className="input-field">
