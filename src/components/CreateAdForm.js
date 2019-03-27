@@ -16,6 +16,7 @@ class CreateAdForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createAd(this.state);
+    this.props.history.push("/");
   };
   render() {
     return (
