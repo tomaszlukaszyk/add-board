@@ -19,7 +19,9 @@ class Dashboard extends Component {
     }
 
     const adsList = ads.map(ad => (
-      <Advertisement key={ad.id} ad={ad} user={users[ad.authorId]} />
+      <Link to={"/ad/" + ad.id} className="black-text">
+        <Advertisement key={ad.id} ad={ad} user={users[ad.authorId]} />
+      </Link>
     ));
     return (
       <div className="dashboard container row">

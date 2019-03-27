@@ -9,14 +9,14 @@ function Advertisement({ ad, user, auth }) {
   const { firstName, lastName } = user;
   const ownerActions =
     auth.isEmpty || auth.uid !== ad.authorId ? null : (
-      <React.Fragment>
+      <div className="card-action">
         <Link to="/" className="blue-text">
           Edit
         </Link>
         <Link to="/" className="blue-text">
           Delete
         </Link>
-      </React.Fragment>
+      </div>
     );
   return (
     <div className="card hoverable">
@@ -34,12 +34,7 @@ function Advertisement({ ad, user, auth }) {
         <span className="card-title">{ad.title}</span>
         <p>{ad.content}</p>
       </div>
-      <div className="card-action">
-        <Link to="/" className="blue-text">
-          Comment
-        </Link>
-        {ownerActions}
-      </div>
+      {ownerActions}
     </div>
   );
 }
