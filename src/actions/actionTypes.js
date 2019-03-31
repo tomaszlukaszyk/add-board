@@ -1,5 +1,7 @@
 export const CREATE_AD = "CREATE_AD";
 export const CREATE_AD_ERROR = "CREATE_AD_ERROR";
+export const UPDATE_AD_SUCESS = "UPDATE_AD_SUCESS";
+export const UPDATE_AD_ERROR = "UPDATE_AD_ERROR";
 export const DELETE_AD_SUCCESS = "DELETE_ADD_SUCCESS";
 export const DELETE_AD_ERROR = "DELETE_AD_ERROR";
 export const ADD_COMMENT = "ADD_COMMENT";

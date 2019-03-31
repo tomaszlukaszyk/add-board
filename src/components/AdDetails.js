@@ -26,7 +26,7 @@ function AdDetails({ ad, id, users }) {
   return (
     <div className="dashboard container row">
       <div className="col s12 m6 offset-m3">
-        <Advertisement ad={ad} user={users[ad.authorId]} />
+        <Advertisement ad={ad} adId={id} user={users[ad.authorId]} />
         <AddComentForm adId={id} />
         <h6>Comments:</h6>
         {comments}

@@ -8,6 +8,7 @@ import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
 import CreateAdForm from "./components/CreateAdForm";
 import AdDetails from "./components/AdDetails";
+import EditAdForm from "./components/EditAdForm";
 
 class App extends Component {
   getComponent(isProtected, component) {
@@ -45,6 +46,10 @@ class App extends Component {
             <Route
               path="/ad/:id"
               component={this.getComponent(true, AdDetails)}
+            />
+            <Route
+              path="/edit-ad/:id"
+              component={this.getComponent(true, EditAdForm)}
             />
           </Switch>
         </div>

@@ -1,10 +1,12 @@
 import {
   CREATE_AD,
   CREATE_AD_ERROR,
-  ADD_COMMENT,
-  ADD_COMMENT_ERROR,
+  UPDATE_AD_SUCESS,
+  UPDATE_AD_ERROR,
   DELETE_AD_SUCCESS,
-  DELETE_AD_ERROR
+  DELETE_AD_ERROR,
+  ADD_COMMENT,
+  ADD_COMMENT_ERROR
 } from "./actionTypes";
 
 export const createAd = ad => {
@@ -28,6 +30,23 @@ export const createAd = ad => {
           payload: err
         })
       );
+  };
+};
+
+export const updateAd = ({ ad, adId }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    getFirestore()
+      .collection("ads")
+      .doc(adId)
+      .update({
+        ...ad
+      })
+      .then(() => {
+        dispatch({ type: UPDATE_AD_SUCESS });
+      })
+      .catch(err => {
+        dispatch({ type: UPDATE_AD_ERROR, payload: err });
+      });
   };
 };
 
