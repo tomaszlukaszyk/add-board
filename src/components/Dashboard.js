@@ -57,5 +57,8 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "ads" }, { collection: "users" }])
+  firestoreConnect([
+    { collection: "ads", orderBy: ["postedAt", "desc"] },
+    { collection: "users" }
+  ])
 )(Dashboard);

@@ -15,7 +15,7 @@ function AdDetails({ ad, id, users }) {
   const comments =
     ad.comments && ad.comments.length ? (
       <ul className="collection">
-        {ad.comments.map(comment => (
+        {[...ad.comments].reverse().map(comment => (
           <Comment comment={comment} profile={users[comment.authorId]} />
         ))}
       </ul>
