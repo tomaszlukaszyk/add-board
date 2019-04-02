@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Avatar from "./Avatar";
 import { signOut } from "../actions/authActions";
 
-function SignedInMenu({ profile, signOut }) {
+function SignedInMenu({ id, profile, signOut }) {
   return (
     <div>
       <ul className="right">
@@ -18,7 +18,7 @@ function SignedInMenu({ profile, signOut }) {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/">
+          <NavLink to={"/user/" + id}>
             <Avatar profile={profile} />
           </NavLink>
         </li>
@@ -28,6 +28,7 @@ function SignedInMenu({ profile, signOut }) {
 }
 
 const mapStateToProps = state => ({
+  id: state.firebase.auth.uid,
   profile: state.firebase.profile
 });
 

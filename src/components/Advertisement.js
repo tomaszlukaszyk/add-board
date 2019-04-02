@@ -25,7 +25,7 @@ function Advertisement({ ad, adId, user, auth, deleteAd }) {
   return (
     <div className="card hoverable">
       <div className="card-content">
-        <Link to="/">
+        <Link to={"/user/" + ad.authorId}>
           <Avatar profile={user} />
         </Link>
         <span className="posted-by grey-text">
